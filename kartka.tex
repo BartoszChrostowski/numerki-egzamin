@@ -88,8 +88,7 @@ $Ax=b \Rightarrow PAx=Pb \Rightarrow LUx=Pb$ (i dalej tak samo jak w LU)
 \subsection{Banachiewicz-Cholesky}
 Jeśli $A \in \mathbb{R}^{k\times k}$ jest symetryczna i dodatnio określona, to istnieje dokładnie jedna macierz $L$ (dolnotrójkątna) z dodatnimi elementami na głównej przekątnej tż $A=LL^T$
 Fakt: $\sqrt{\omega_1} = l_{11} \ldots \sqrt{\frac{\omega_{k}}{\omega_{k-1}}} = l_{kk}$  $\omega$ wyznaczniki wiodących minorów głównych\\
-Tw. Sylvestera dla każdego $i \in [k]$  $\omega_i > 0$ $\Leftrightarrow$ $A$ jest dodatnio określona 
-
+Tw. Sylvestera dla każdego $i \in [k]$  $\omega_i > 0$ $\Leftrightarrow$ $A$ jest dodatnio określona
 \section{Iteracyjne metody rozwiązywania u.r.l.}
 Tw. Metoda iteracyjna $x^{(k+1)} = Bx^k + c$ jest zbieżna globalnie $\Leftrightarrow \rho(B) < 1$\\ im $\rho(B)$ mniejsze tym szybciej\\
 Tw. Jeśli $||B|| < 1$ gdzie $||\cdot||$ jest normą zgodną z pewną normą wektorową to metoda $x^{(k+1)}=Bx^k+c$ jest zbieżna globalnie\\
@@ -104,8 +103,9 @@ Warunki stopu: \\ %enumerate za dużo miejsca nie chce mi się z nim bawić żeb
 4) $||Ax^{(k)} -b || \leq d$ błąd residualny. \\
 
 \subsection{Metoda Jacobiego}
-Jeśli macierz $A$ jest silnie diagonalnie dominująca $\left(\sum_{j=1,i\neq j}^n |a_{ij}| \leq |a_{ii}|\right)$, to metoda Jacobiego jest zbieżna
-$x^{(k+1)} = -D^{-1}(L+U)x^{(k)}+D^{-1}b$
+$x^{(k+1)} = -D^{-1}(L+U)x^{(k)}+D^{-1}b$\\
+$B = -D^{-1}(L+U)$\\
+W metodzie Jacobiego warunek dostateczny zbieżności $||B||_{\infty} < 1$ jest spełniony np. wtedy, gdy macierz $A$ jest silnie diagonalnie dominująca $\left(\sum_{j=1,i\neq j}^n |a_{ij}| \leq |a_{ii}|\right)$
 \begin{algorithmic}
 \FOR{$p=1,\ldots,n$}
 	\STATE{$x_p^{(k+1)} = \left( b_p - \sum_{j=1}^{p-1}a_{pj}x_j^{(k)} - \sum_{j=p+1}^{n}a_{pj}x_j^{(k)}\right)/ a_{pp}$}
@@ -113,12 +113,14 @@ $x^{(k+1)} = -D^{-1}(L+U)x^{(k)}+D^{-1}b$
 \end{algorithmic}
 \subsection{Gauss-Seidel}
 $x^{(k+1)} = -(L+D)^{-1}Ux^{(k)}+(L+D)^{-1}b$\\
-Jeśli $A=A^T$ oraz $A$ jest dodatnio określona, to metoda Gaussa-Seidla jest zbieżna.
+Jeśli $A=A^T$ oraz $A$ jest dodatnio określona, to metoda Gaussa-Seidla jest zbieżna.\\
+Jeśli A jest silnie diagonalnie dominująca to metoda Gaussa-Seidela jest zbieżna.
 \subsection{Metoda SOR}
 $B_{SOR} = (D + \omega L)^{-1}((1- \omega)D - \omega U)$\\
-$c_{SOR}(D+\omega L)^{-1}b \omega$\\
+$c_{SOR}=\omega(D+\omega L)^{-1}b$\\
+$x^{(k+1)}=B_{SOR}x^{(k)}+c_{SOR}$\\
 $$x_i^{(k+1)} = (1 - \omega)x_i^{(k)} + \frac{\omega}{a_{ii}}\left( b_i- \sum_{j<i}a_{ij}x_j^{k+1} - \sum_{j>i}a_{ij}x_j^{(k)} \right)$$
-Tw. Kahana$^{(?)}$ Dla metody SOR $\rho(B_{SOR)>|1-\omega|}$\\
+Tw. Kahana: Dla metody SOR $\rho(B_{SOR})\geq|\omega - 1|$\\
 Tw. Jeśli $A$ jest symetryczna i dodatnio określona, to metoda SOR jest zbieżna dla każdego $\omega \in (0,2)$
 \subsection{Warunek zbieżności}
 \thispagestyle{empty} % XDD
@@ -126,13 +128,22 @@ $x = Bx + c$\\
 $x - x^{(k+1)} = Bx + c - x^{(k+1)} = Bx+c -Bx^{(k)}-c$\\
 $x-x^{(k+1)} = B(x-x^{(k)}) = \ldots = B^{k+1}(x-x^{(0)})$\\
 $\underset{k \to \inf}{\lim} e_k = 0 \Leftrightarrow \underset{k \to \inf}{\lim} B^{k+1} = 0$
-\section{Wyznaczanie m. zerowych f. 1 zmiennej}
+\section{Wyznaczanie m. zerowych funkcji 1 zmiennej}
 \subsection{Metoda Newtona}
-$x_{k+1}=x{k}-\frac{f(x_k)}{f^{\prime}(x_k)}$\\
+$x_{k+1}=x_{k}-\frac{f(x_k)}{f^{\prime}(x_k)}$\\
 Jeżeli \textbf{1)} $f$ jest klasy $C^2([a,b])$ \textbf{2)} $f(a)f(b)<0$  \textbf{3)} $f^{\prime}$ i $f^{\prime \prime}$ nie zmieniają znaku na $[a,b]$ \textbf{4)} $x_0$ jest takie, że $f(x_0)f^{\prime \prime} > 0$ to metoda newtona jest zbieżna\\
+Błąd k-tego przybliżenia można oszacować poprzez nierówności (x* to dokładna wartość pierwiastka):\\
+$|x^{*}-x_{k}| \leq \frac{f(x_{k})}{m}$\\
+lub\\
+$|x^{*}-x_{k}| \leq \frac{M}{2m}(x^{*} - x_{k-1})^{2}$\\
+gdzie\\
+$m = \min \limits_{x \in [a, b]} |f'(x)|$\\
+$M = \max \limits_{x \in [a, b]} |f''(x)|$\\
+Metoda Newtona jest metodą o zbieżności kwadratowej (rząd zbieżności wynosi 2). Wyjątkiem są zera wielokrotne, dla których zbieżność jest liniowa i wynosi 1. Jej współczynnik zbieżności to $\frac{M}{2m}$.
+Oznacza to, iż przy spełnionych założeniach błąd maleje kwadratowo wraz z ilością iteracji.
 \subsection{Metoda siecznych}
 $x_{k+1} = x_k - f(x_k)\frac{x_k-x_{k-1}}{f(x_k)-f(x_{k-1})}$\\
-Warunki zb. te same tylko oba $x_0$ i $x_1$ muszą spełniać 4)\\
+Warunki zb. te same tylko oba $x_0$ i $x_1$ muszą spełniać \textbf{4)}\\
 \subsection{Metoda Halley'a}
 $$x_{k+1}=x_k-\frac{f(k_{k})}{f^{\prime}(k_k)-\frac{f(x_k)}{2f^\prime(k_{k})}f^{\prime \prime}(k_{k})}$$
 \subsection{Metoda Parabol}
@@ -158,8 +169,10 @@ Newtona $p=2$, Stycznych $p=\frac{1+\sqrt{5}}{2}$, Halleg'a $p=3$, Parabol $p=3$
 Dla Newtona (dd z Taylora w ot. $x_0$) dla miejsc pojedynczych
 $$|e_{k+1}|\leq \frac{1}{2}\left| \frac{f^{\prime \prime}(\xi)}{f^{\prime}(x_k)}\right| |e_k|^2$$
 \section{Rozwiązywanie układów równań nielinowych}
-{\Large \textbf{•TO DO}}
-
+\large{\textbf{TO DO:}}
+\subsection{Metoda Richardsona}
+\subsection{Metoda Parabol}
+\subsection{Metoda iteracji prostej}
 \section{Uwarunkowanie zadania roz. u.r.l}
 \center{$cond(A) = ||A|| \ ||A^{-1}||$}
 \center{$cond_2(A) = ||A||_2 \ ||A^{-1}||_2 = \frac{\lambda_{max}(A)}{\lambda_{min}(A)}$}\\
