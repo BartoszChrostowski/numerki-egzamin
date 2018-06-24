@@ -3,7 +3,7 @@
 %2018 sesja letnia
 
 \documentclass[twocolumn]{article}
-\usepackage[a4paper,margin=1.15cm, top=1cm,bottom=1cm]{geometry}
+\usepackage[a4paper,margin=1.1cm, top=1cm,bottom=1cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage[polish]{babel} 
@@ -16,7 +16,7 @@
 \sectionfont{\large}
 \subsectionfont{\normalsize}
 \usepackage{scrextend} % ? stackexchange: how to change latex less 10pt
-\changefontsizes[8pt]{8pt} %? stackexchange: how to change latex less 10pt
+\changefontsizes[9pt]{8pt} %? stackexchange: how to change latex less 10pt
 \usepackage{lipsum} %? stackexchange: how to change latex less 10pt
 \usepackage[pdftex	,pdfauthor={Bartosz Chrostowski},pdftitle={Kartka na egzamin},pdfsubject={Metody numeryczne 1}]{hyperref}
 
@@ -53,6 +53,7 @@ Oszacowanie błędu alg. num. poprawnego:\\
 $||fl(A(d)) - \varphi(d)|| \leq cond(d) \frac{K\cdot2^{-t}||d||}{||d||}||\varphi(d)||$\\
 Sama numeryczna poprawność nie gwarantuje dokładności (zależy od cond i K)
 \section{Interpolacja}
+$f(x)-p_n(x)=\frac{1}{n+1!}f^{(n+1)}(\xi)(x-x_0)\ldots(x-x_n)$
 \subsection{Lagrange}
 $$p_{n}(x) = \sum_{i=0}^{n}f_{i}l_{i}(x)$$
 gdzie: $$l_i(x) = \prod_{{j = 0},\ {j \neq i}}^{n} \frac{x - x_{j}}{x_{i} - x_{j}}$$
@@ -93,13 +94,13 @@ Fakt: $\sqrt{\omega_1} = l_{11} \ldots \sqrt{\frac{\omega_{k}}{\omega_{k-1}}} = 
 Tw. Sylvestera dla każdego $i \in [k]$  $\omega_i > 0$ $\Leftrightarrow$ $A$ jest dodatnio określona
 Jeśli dla macierzy symetrycznej rozkład Ba-Ch nie istnieje to macierz nie jest dodatnio określona.
 \section{Iteracyjne metody rozwiązywania u.r.l.}
-\thispagestyle{empty}
 Tw. Metoda iteracyjna $x^{(k+1)} = Bx^k + c$ jest zbieżna globalnie $\Leftrightarrow \rho(B) < 1$\\ im $\rho(B)$ mniejsze tym szybciej\\
 Tw. Jeśli $||B|| < 1$ gdzie $||\cdot||$ jest normą zgodną z pewną normą wektorową to metoda $x^{(k+1)}=Bx^k+c$ jest zbieżna globalnie $|\lambda |\leq ||A||$ dd ze zgodności norm\\
-Tw. Greszgorin niech $A \in \mathbb{C}^{n \times n}$. Dla każdej wartości własnej $\lambda \in \sigma(A)$ istnieje $i \in \{1,\ldots,n\}$ taki, że
+Tw. Gerszgorina niech $A \in \mathbb{C}^{n \times n}$. Dla każdej wartości własnej $\lambda \in \sigma(A)$ istnieje $i \in \{1,\ldots,n\}$ taki, że
 $$\lambda \in K_i = \{z \in \mathbb{C}:|z-a_{ii}| \leq \sum_{j=1,j \neq i}^{n} |a_{ij}|$$
-gdzie $K_i$ to $i$-te koło Greszgorina. Ponadto\\
-$\sigma(A) \subset \bigcup_{i=1}^nK_i = G(A)$ gdzie $G(A)$ nazywany jest zbiorem Greszgorina. ($A=A^T \rightarrow \lambda \in \mathbb{R}$)\\
+gdzie $K_i$ to $i$-te koło Gerszgorina. Ponadto\\
+$\sigma(A) \subset \bigcup_{i=1}^nK_i = G(A)$ gdzie $G(A)$ nazywany jest zbiorem Gerszgorina. ($A=A^T \rightarrow \lambda \in \mathbb{R}$)\\
+Tw. Jeśłi k kół Gerszgorina tworzy zbiór spójny i rozłączny z pozostałymi kołami to w ytm zbiorze znajduje się dokładnie k wartości własnych
 \textbf{Warunki stopu:} \\ %enumerate za dużo miejsca nie chce mi się z nim bawić żeby mniej 
 1) $||x^{(k+1)} - x^{(k)}|| \leq d$ błąd bezwzględny \\
 2) $||x^{(k+1)} - x^{(k)}|| \leq d||x^{(k)||}$ błąd względny \\
@@ -135,10 +136,9 @@ $\underset{k \to \inf}{\lim} e_k = 0 \Leftrightarrow \underset{k \to \inf}{\lim}
 Warunki stopu te same oprócz \textbf{4)} $|f(x_k)| \leq d$ (stosować ostrożnie)
 \subsection{Metoda Newtona}
 $x_{k+1}=x_{k}-\frac{f(x_k)}{f^{\prime}(x_k)}$\\
-Jeżeli \textbf{1)} $f$ jest klasy $C^2([a,b])$ \textbf{2)} $f(a)f(b)<0$  \textbf{3)} $f^{\prime}$ i $f^{\prime \prime}$ nie zmieniają znaku na $[a,b]$ \textbf{4)} $x_0$ jest takie, że $f(x_0)f^{\prime \prime} > 0$ to metoda newtona jest zbieżna\\
-Błąd k-tego przybliżenia można oszacować nierówności z subsekcji \textbf{9.6}\\
-Metoda Newtona jest metodą o zbieżności kwadratowej (rząd zbieżności wynosi 2). Wyjątkiem są zera wielokrotne, dla których zbieżność jest liniowa i wynosi 1. Jej współczynnik zbieżności to $\frac{M}{2m}$.
-Oznacza to, iż przy spełnionych założeniach błąd maleje kwadratowo wraz z ilością iteracji.
+Jeżeli \textbf{1)} $f$ jest klasy $C^2([a,b])$ \textbf{2)} $f(a)f(b)<0$  \textbf{3)} $f^{\prime}$ i $f^{\prime \prime}$ nie zmieniają znaku na $[a,b]$ \textbf{4)} $x_0$ jest takie, że $f(x_0)f^{\prime \prime}(x_0) > 0$ to metoda newtona jest zbieżna\\
+Błąd k-tego przybliżenia można oszacować nierówności z podsekcji \textbf{9.6}\\
+Metoda Newtona jest metodą o zbieżności kwadratowej (rząd zbieżności wynosi 2). Wyjątkiem są zera wielokrotne, dla których zbieżność jest liniowa i wynosi 1.
 \subsection{Metoda siecznych}
 $x_{k+1} = x_k - f(x_k)\frac{x_k-x_{k-1}}{f(x_k)-f(x_{k-1})}$\\
 Warunki zb. te same tylko oba $x_0$ i $x_1$ muszą spełniać \textbf{4)}\\
@@ -173,12 +173,29 @@ $p^{(k)} = - [F^\prime(x^{(k)})]^{-1}F(x^{(k)})$\\
 1) obliczamy $F(x^{(k)})$ i $F^\prime(x^{(k)})$\\
 2) rozwiązujemy u.r.l. $F^\prime(x^{(k)})p^{(k)} = -F(x^{(k)})$\\
 3) Obliczamy $x^{(k+1)} = x^{(k)} + p^{(k)}$
-\section{Uwarunkowanie zadania roz. u.r.l}
-\center{$cond(A) = ||A|| \ ||A^{-1}||$}
-\center{$cond_2(A) = ||A||_2 \ ||A^{-1}||_2 = \frac{\lambda_{max}(A)}{\lambda_{min}(A)}$}\\
+\section{Uwarunkowanie zadania roz. u.r.l i algebra}
+\begin{center}
+$cond(A) = ||A|| \ ||A^{-1}||$
+$cond_2(A) = ||A||_2 \ ||A^{-1}||_2 = \frac{\lambda_{max}(A)}{\lambda_{min}(A)}$\\
 Jeśli $A=A^T$, to $||A||_2 = \sqrt{\rho(A^TA)}=\sqrt{\rho(A^2)} =\sqrt{(\rho(A))^2}=\rho(A)$\\
-\center{$||A^{-1}||_2 = \left| \frac{1}{\lambda_{min}(A)}\right|$} 
+$||A^{-1}||_2 = \left| \frac{1}{\lambda_{min}(A)}\right|$\\
+Jeśli $\lambda \in \delta(A)$ oraz $detA \neq 0$ to $\frac{1}{\lambda} \in \delta(A^{-1})$\\
+Jeśli $A \in \mathbb{R}^{n\times n}$ oraz $A=A^T$ to $\delta (A) \subset \mathbb{R}$\\
+Jeśli $A \in \mathbb{C}^{n\times n}$ oraz $A=A^*$ to $\delta (A) \subset \mathbb{R}$\\
+$A^*=\overline{A}^T=\overline{A^T}$ sprzężenie hermitowskie macierzy\\
+$A^*A=AA^*=I_n$ macierz unitarna
+\end{center}
+
+\section{Węzły Czebyszewa}
+$T_n=\cos(n\arccos x)$\\
+$T_{k+1} = 2xT_{k}(x)-T_{k-1}(x)$\\
+Węzły Czebyszewa na dowolnym przedziale $[a,b]$\\
+$$x_i=\frac{a+b}{2}-\frac{b-a}{2}\cos\left(\left(\frac{2i+1}{2n+2}\right)\pi\right)$$
+\textbf{Tw.} Fabera Dla dowolnego ciągu układu węzłów istnieje taka funkcja ciągła, że ciąg wielomianów interpolacyjnych, na tych węzłach, nie jest do niej zbieżna\\
+\textbf{Tw.} Jeśli $f$ jest funkcją ciągłą to istnieje taki ciąg układów węzłów, że zbudowane na nich wielomiany interpolacyjne tworzą ciąg zbieżny do $f$\\
+\textbf{Tw.} Weierstrassa Jeśli funkcja $f$ jest ciągła to dla każdego $\epsilon > 0$ istnieje taki wielomian p, że $\max|f(x)-p(x)| \leq \epsilon$
 \end{flushleft}
+\thispagestyle{empty}
 \end{document}
 
 %tabelka do harmitta ale za dużo miejsca więc porzucona
