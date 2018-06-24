@@ -110,7 +110,7 @@ Tw. Jeśłi k kół Gerszgorina tworzy zbiór spójny i rozłączny z pozostały
 \subsection{Metoda Jacobiego}
 $x^{(k+1)} = -D^{-1}(L+U)x^{(k)}+D^{-1}b$\\
 $B = -D^{-1}(L+U)$\\
-W metodzie Jacobiego warunek dostateczny zbieżności $||B||_{\infty} < 1$ jest spełniony np. wtedy, gdy macierz $A$ jest silnie diagonalnie dominująca $\left(\sum_{j=1,i\neq j}^n |a_{ij}| \leq |a_{ii}|\right)$
+W metodzie Jacobiego warunek dostateczny zbieżności $||B||_{\infty} < 1$ jest spełniony wtedy, gdy macierz $A$ jest silnie diagonalnie dominująca $\left(\sum_{j=1,i\neq j}^n |a_{ij}| < |a_{ii}|\right)$
 \begin{algorithmic}
 \FOR{$p=1,\ldots,n$}
 	\STATE{$x_p^{(k+1)} = \left( b_p - \sum_{j=1}^{p-1}a_{pj}x_j^{(k)} - \sum_{j=p+1}^{n}a_{pj}x_j^{(k)}\right)/ a_{pp}$}
@@ -119,7 +119,7 @@ W metodzie Jacobiego warunek dostateczny zbieżności $||B||_{\infty} < 1$ jest 
 \subsection{Gauss-Seidel}
 $x^{(k+1)} = -(L+D)^{-1}Ux^{(k)}+(L+D)^{-1}b$\\
 Jeśli $A=A^T$ oraz $A$ jest dodatnio określona, to metoda Gaussa-Seidla jest zbieżna.\\
-Jeśli A jest silnie diagonalnie dominująca to metoda Gaussa-Seidela jest zbieżna.
+Jeśli A jest silnie diagonalnie dominująca to metoda Gaussa-Seidela jest zbieżna. (na wykładzie te tw. tylko dla Jacobiego)$^?$
 \subsection{Metoda SOR}
 $B_{SOR} = (D + \omega L)^{-1}((1- \omega)D - \omega U)$\\
 $c_{SOR}=\omega(D+\omega L)^{-1}b$\\
