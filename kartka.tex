@@ -58,7 +58,7 @@ $$p_{n}(x) = \sum_{i=0}^{n}f_{i}l_{i}(x)$$
 gdzie: $$l_i(x) = \prod_{{j = 0},\ {j \neq i}}^{n} \frac{x - x_{j}}{x_{i} - x_{j}}$$
 \subsection{Newton}
 $$c_{0} + c_{1}(x-x_{0}) + c_{2}(x-x_{0})(x-x_{1}) + \ldots + c_{n}(x-x_{0})\ldots (x-x_{n-1})$$
-gdzie: $$c_{k} = f_{0,1,2,\ldots,k}$$ oraz $$f_{i,i+1,\ldots,k+i} \stackrel{def}{=} \frac{f_{i+1,\ldots,k} + f_{i,\ldots,(i+k-1)}}{x_{i+k}-x_{i}}$$
+gdzie: $$c_{k} = f_{0,1,2,\ldots,k}$$ oraz $$f_{i,i+1,\ldots,k+i} \stackrel{def}{=} \frac{f_{i+1,\ldots,k} - f_{i,\ldots,(i+k-1)}}{x_{i+k}-x_{i}}$$
 Hermite identycznie tylko że w tabeli węzły się powtarzają i w miejscu różnic dzielonych których nie można otrzymać wpisujemy $\frac{f^{(k)}(x_i)}{k!}$ a w wielomianie interpolacyjnym składniki postaci $(x-x_i)$ będą posiadały odpowiednią potęgę
 
 \section{Całkowanie numeryczne}
