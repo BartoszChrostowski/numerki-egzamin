@@ -1,7 +1,13 @@
 # numerki-egzamin
-Kartka pomocnicza na egzamin numeryczny
+Dziękuję Emilowi Dragańczukowi za udostępnienie notatek, wszystkim współautorom i tym którzy informowali o błędach.
 
-Można natomiast korzystać z jednej pomocniczej kartki z wzorami, definicjami
+Kartka udostępniona "AS IS", bez żadnej gwarancji zdania egzaminu.
+
+POWODZENIA NA EGZAMINIE
+
+
+
+Można korzystać z jednej pomocniczej kartki z wzorami, definicjami
 i innymi informacjami. Kartka może być wyłącznie formatu A4. Może być
 zapisana (lub zadrukowana) z obu stron.
 Korzystanie z kartki większej niż A4 nie jest dozwolone (złożone na pół kartki
