@@ -16,7 +16,7 @@
 \sectionfont{\large}
 \subsectionfont{\normalsize}
 \usepackage{scrextend} % ? stackexchange: how to change latex less 10pt
-\changefontsizes[9pt]{8pt} %? stackexchange: how to change latex less 10pt
+\changefontsizes[10pt]{8pt} %? stackexchange: how to change latex less 10pt
 \usepackage{lipsum} %? stackexchange: how to change latex less 10pt
 \usepackage[pdftex	,pdfauthor={Bartosz Chrostowski},pdftitle={Kartka na egzamin},pdfsubject={Metody numeryczne 1}]{hyperref}
 
@@ -124,10 +124,10 @@ Jeśli A jest silnie diagonalnie dominująca to metoda Gaussa-Seidela jest zbie�
 $B_{SOR} = (D + \omega L)^{-1}((1- \omega)D - \omega U)$\\
 $c_{SOR}=\omega(D+\omega L)^{-1}b$\\
 $x^{(k+1)}=B_{SOR}x^{(k)}+c_{SOR}$\\
-$$x_i^{(k+1)} = (1 - \omega)x_i^{(k)} + \frac{\omega}{a_{ii}}\left( b_i- \sum_{j<i}a_{ij}x_j^{k+1} - \sum_{j>i}a_{ij}x_j^{(k)} \right)$$
+$$x_i^{(k+1)} = (1 - \omega)x_i^{(k)} + \frac{\omega}{a_{ii}}\left( b_i- \sum_{j<i}a_{ij}x_j^{(k+1)} - \sum_{j>i}a_{ij}x_j^{(k)} \right)$$
 Tw. Kahana: Dla metody SOR $\rho(B_{SOR})\geq|\omega - 1|$\\
 Tw. Jeśli $A$ jest symetryczna i dodatnio określona, to metoda SOR jest zbieżna dla każdego $\omega \in (0,2)$
-\subsection{Warunek zbieżności}
+s\subsection{Warunek zbieżności}
 $x = Bx + c$\\
 $x - x^{(k+1)} = Bx + c - x^{(k+1)} = Bx+c -Bx^{(k)}-c$\\
 $x-x^{(k+1)} = B(x-x^{(k)}) = \ldots = B^{k+1}(x-x^{(0)})$\\
@@ -175,8 +175,7 @@ $p^{(k)} = - [F^\prime(x^{(k)})]^{-1}F(x^{(k)})$\\
 3) Obliczamy $x^{(k+1)} = x^{(k)} + p^{(k)}$
 \section{Uwarunkowanie zadania roz. u.r.l i algebra}
 \begin{center}
-$cond(A) = ||A|| \ ||A^{-1}||$
-$cond_2(A) = ||A||_2 \ ||A^{-1}||_2 = \frac{\lambda_{max}(A)}{\lambda_{min}(A)}$\\
+$cond(A) = ||A|| \ ||A^{-1}||$\\ $cond_2(A) = ||A||_2 \ ||A^{-1}||_2 = \left|\frac{\lambda_{max}(A)}{\lambda_{min}(A)}\right|$ dla $A=A^T$\\
 Jeśli $A=A^T$, to $||A||_2 = \sqrt{\rho(A^TA)}=\sqrt{\rho(A^2)} =\sqrt{(\rho(A))^2}=\rho(A)$\\
 $||A^{-1}||_2 = \left| \frac{1}{\lambda_{min}(A)}\right|$\\
 Jeśli $\lambda \in \delta(A)$ oraz $detA \neq 0$ to $\frac{1}{\lambda} \in \delta(A^{-1})$\\
